@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { WiHumidity, WiStrongWind, WiBarometer, WiDayHaze, WiThermometerExterior, WiWindDeg, WiSmoke } from "react-icons/wi";
-
+ import { ToastContainer, toast } from 'react-toastify';
 const WeatherCard = () => {
 
     const [bdTime, setBdTime] = useState("");
@@ -30,7 +30,7 @@ const WeatherCard = () => {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(success, error);
         } else {
-            alert("Geolocation is not supported by this browser.");
+            toast.error("Geolocation is not supported by this browser.");
         }
     };
 
@@ -49,6 +49,8 @@ const WeatherCard = () => {
 
     return (
         <div className="max-w-xl mt-5 border border-gray-500 text-white rounded-xl p-6 bg-transparent">
+
+            <ToastContainer/>
             <div className="flex justify-between items-start">
                 <div>
                     <p className="text-base text-gray-300 font-semibold">Current weather</p>
